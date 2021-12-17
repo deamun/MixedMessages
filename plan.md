@@ -126,7 +126,7 @@ Random build generator for when you can't decide what character to play in Skyri
           - Otherwise:
             - Set duplicate check to false
         <p></p>
-        
+
       - Push skill value to chosen skills list
     - Check if any chosen skills are weapon skills or destruction:
        - Loop over chosen skills list:
@@ -152,7 +152,7 @@ Random build generator for when you can't decide what character to play in Skyri
    - skillList
    - weaponClassList
    - magicElementList
-   - supernaturalList
+   - ~~supernaturalList~~ __EDIT: *removed vampirism/werewolf -- not necessary*__
    <p></p>
 
 4. Create character object:
@@ -180,8 +180,8 @@ Random build generator for when you can't decide what character to play in Skyri
 
    > *Secondary skill list should contain three unique skills chosen from skill list (no dubplicates of primary skills)* 
 
-   6. Create character supernatural variable:
-      - Call random number generator, pass supernatural list length
+   ~~6. Create character supernatural variable:~~
+      - ~~Call random number generator, pass supernatural list length~~ __EDIT: *removed vampire/werewolf selection -- not necessary*__
    <p></p>
 
 5. Format Output Function:
@@ -190,7 +190,7 @@ Random build generator for when you can't decide what character to play in Skyri
    - Something like: 
    <p></p>
 
-   > "Your character is a *__morality__* *__gender__* *__race__* *__who fears the sun/embraces the moonlight__* (only include if vampire or werewolf). Their primary skills are *__primary skills__* with *__secondary skills__* to complement their adventure. Have fun!"
+   > "Your character is a *__morality__* *__gender__* *__race__*. Their primary skills are *__primary skills__* with *__secondary skills__* to complement their adventure. Have fun!"
    <p></p>
 
 6. Call format output function, pass character object
