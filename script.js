@@ -10,17 +10,17 @@ const skillListGenerator = (skillList, numSkills, primarySkills = []) => {
         let skill = skillList[randomNumberGenerator(skillList.length)];
 
         let duplicate = true; // Guilty until proven innocent
-
+        
         while (duplicate === true) {
-            for (const primarySkill of primarySkills) {
+            for (let primarySkill of primarySkills) {
                 if (skill === primarySkill) {
                     skill = skillList[randomNumberGenerator(skillList.length)];
                 } else {
                     duplicate = false;
                 };
             };
-
-            for (const chosenSkill of chosenSkills) {
+            
+            for (let chosenSkill of chosenSkills) {
                 if (skill === chosenSkill) {
                     skill = skillList[randomNumberGenerator(skillList.length)];
                     duplicate = true;
@@ -28,22 +28,28 @@ const skillListGenerator = (skillList, numSkills, primarySkills = []) => {
                     duplicate = false;
                 };
             };
+
+            // If both primarySkills and chosenSkills are empty arrays (the first time the function is called), the loop will be infinite without the below.
+            if (primarySkills.length === 0 && chosenSkills.length === 0) {
+                duplicate = false;
+            };
         };
         
         chosenSkills.push(skill);
     };
 
-    for (const chosenSkill of chosenSkills) {
-        if (chosenSkill === 'Two-Handed') {
-            chosenSkill = chosenSkill + ': ' + weaponClassList[randomNumberGenerator(weaponClassList.length - 1)];
+    for (let i = 0; i < chosenSkills.length; i++) {
+        if (chosenSkills[i] === 'Two-Handed') {
+            chosenSkills[i] = chosenSkills[i] + ': ' + weaponClassList
+            [randomNumberGenerator(weaponClassList.length - 1)];
         };
 
-        if (chosenSkill === 'One-Handed') {
-            chosenSkill = chosenSkill + ': ' + weaponClassList[randomNumberGenerator(weaponClassList.length)];
+        if (chosenSkills[i] === 'One-Handed') {
+            chosenSkills[i] = chosenSkills[i] + ': ' + weaponClassList[randomNumberGenerator(weaponClassList.length)];
         };
 
-        if (chosenSkill === 'Destruction') {
-            chosenSkill = chosenSkill + ': ' + magicElementList[randomNumberGenerator(magicElementList.length)];
+        if (chosenSkills[i] === 'Destruction') {
+            chosenSkills[i] = chosenSkills[i] + ': ' + magicElementList[randomNumberGenerator(magicElementList.length)];
         };
     };
 
@@ -61,6 +67,7 @@ const skillList = ['Alchemy', 'Alteration', 'Archery', 'Block', 'Conjuration', '
 const weaponClassList = ['Axe', 'Hammer', 'Sword', 'Dagger'];
 const magicElementList = ['Fire', 'Lightning', 'Frost'];
 
+
 const character = {
     morality: moralityList[randomNumberGenerator(moralityList.length)],
     gender: genderList[randomNumberGenerator(genderList.length)],
@@ -69,4 +76,4 @@ const character = {
     secondarySkills: skillListGenerator(skillList, 3, this.primarySkills),
 };
 
-formatOutput(character);
+console.log(character);
