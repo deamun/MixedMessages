@@ -103,13 +103,31 @@ Random build generator for when you can't decide what character to play in Skyri
    - Create chosen skills variable, initialise to empty list
    - Starting from 0, loop 'number of skills' times. Inside loop:
       - Create variable of skill
-      - Assign value to skill equal to skill list at index location that is a result of calling random number generator, passing skill list length.
+      - Assign value to skill equal to skill list at index location that is a result of calling random number generator, passing skill list length
       <p></p>
 
       > *Ensure same skill is not duplicated by checking chosen skills and primary skills*
       
-      - While skill value does not equal chosen skills value at index location of current iteration AND skill value does not equal primary skills value at index location of current iteration:
-         - Push skill value to chosen skills list
+      - ~~While skill value does not equal chosen skills value at index location of current iteration AND skill value does not equal primary skills value at index location of current iteration:~~ __EDIT: *incorrect logic*__
+      - Create duplicate check variable, initialise to true
+      - While duplicate check is true:
+        - Loop over primary skills list:
+
+          - If skill value is equal primary skills list iteration value:
+            - Reassign value to skill equal to skill list at index location that is a result of calling random number generator, passing skill list length
+          - Otherwise:
+            - Set duplicate check to false
+            <p></p>
+
+        - Loop over chosen skills list:
+          - If skill value is equal to chosen skills list iteration value:
+            - Reassign value to skill equal to skill list at index location that is a result of calling random number generator, passing skill list length
+            - Set duplicate check to true
+          - Otherwise:
+            - Set duplicate check to false
+        <p></p>
+        
+      - Push skill value to chosen skills list
     - Check if any chosen skills are weapon skills or destruction:
        - Loop over chosen skills list:
           - If chosen skill element is equal to 'Two-Handed':
