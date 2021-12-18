@@ -3,6 +3,13 @@
 The aim of the project is to build a random message generator using JavaScript.
 
 ## Table of Contents
+- [General Info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Launch](#launch)
+- [Status](#status)
+- [Inspiration](#inspiration)
+- [Contact](#contact)
 
 ## General Info
 - This project is part of Codecademy's Full-Stack Engineering path.
